@@ -1,54 +1,54 @@
-import supabase from '../config/supabaseClient'
-import { useEffect, useState } from 'react'
+import supabase from '../config/supabaseClient';
+import { useEffect, useState } from 'react';
 
 // components
-import SmoothieCard from '../components/SmoothieCard'
+import CreatorCard from '../components/CreatorCard';
 
 const Home = () => {
-  const [fetchError, setFetchError] = useState(null)
-  const [smoothies, setSmoothies] = useState(null)
+  const [fetchError, setFetchError] = useState(null);
+  const [creators, setCreators] = useState(null);
 
   const handleDelete = (id) => {
-    setSmoothies(prevSmoothies => {
-      return prevSmoothies.filter(sm => sm.id !== id)
-    })
-  }
+    setCreators(prevCreators => {
+      return prevCreators.filter(sm => sm.id !== id);
+    });
+  };
 
   useEffect(() => {
-    const fetchSmoothies = async () => {
+    const fetchCreators = async () => {
       const { data, error } = await supabase
-        .from('recipes')
-        .select()
-      
+        .from('creators-table')
+        .select();
+
       if (error) {
-        setFetchError('Could not fetch the smoothies')
-        setSmoothies(null)
+        setFetchError('Could not fetch the creators');
+        setCreators(null);
       }
       if (data) {
-        setSmoothies(data)
-        setFetchError(null)
+        setCreators(data);
+        setFetchError(null);
       }
-    }
+    };
 
-    fetchSmoothies()
+    fetchCreators();
 
-  }, [])
+  }, []);
 
   return (
     <div className="page home">
       {fetchError && (<p>{fetchError}</p>)}
-      {smoothies && (
-        <div className="smoothies">
+      {creators && (
+        <div className="creators">
           {/* order-by buttons */}
-          <div className="smoothie-grid">
-            {smoothies.map(smoothie => (
-              <SmoothieCard key={smoothie.id} smoothie={smoothie} onDelete={handleDelete} />
+          <div className="creator-grid">
+            {creators.map(creator => (
+              <CreatorCard key={creator.id} creator={creator} onDelete={handleDelete} />
             ))}
           </div>
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

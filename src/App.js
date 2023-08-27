@@ -4,20 +4,22 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import Home from "./pages/Home"
 import Create from "./pages/Create"
 import Update from "./pages/Update"
+import SingleRecord from "./pages/SingleRecord"
 
 
 function App() {
   return (
     <BrowserRouter>
       <nav>
-        <h1>Supa Smoothies</h1>
-        <Link to="/">Home</Link>
-        <Link to="/create">Create New Smoothie</Link>
+        <h1>CREATORVERSE</h1>
+        <Link to="/">VIEW ALL CREATORS</Link>
+        <Link to="/create">ADD CREATORS</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<Create />} />
-        <Route path="/:id" element={<Update />} />
+        <Route path="/edit/:id" element={<Update />} />
+        <Route path="/:id" element={<SingleRecord />} />
       </Routes>
     </BrowserRouter>
   );

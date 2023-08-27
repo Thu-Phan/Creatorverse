@@ -33,14 +33,14 @@ nav h1 {
   padding: 20px;
 }
 
-/* smoothie grid */
-.smoothie-grid {
+/* creator grid */
+.creator-grid {
   margin-top: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;
 }
-.smoothie-card {
+.creator-card {
   width: 100%;
   padding: 10px;
   background: #fff;
@@ -48,7 +48,7 @@ nav h1 {
   border-radius: 6px;
   position: relative;
 }
-.smoothie-card .rating {
+.creator-card .rating {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -61,10 +61,10 @@ nav h1 {
   line-height: 0px;
   text-align: center;
 }
-.smoothie-card .buttons {
+.creator-card .buttons {
   text-align: right;
 }
-.smoothie-card i {
+.creator-card i {
   color: #bbb;
   margin-left: 10px;
   font-size: 1.2em;
